@@ -1,0 +1,12 @@
+com\uregina\app\Flight.class
+com\uregina\app\App.class
+com\uregina\app\Ticket.class
+com\uregina\app\Date.class
+com\uregina\exceptions\InvalidDateException.class
+com\uregina\exceptions\InvalidTimeException.class
+com\uregina\app\Time12.class
+com\uregina\exceptions\NegativeTimeException.class
+com\uregina\app\Time24.class
+com\uregina\app\AmPm.class
+com\uregina\app\DateTime.class
+com\uregina\exceptions\MoreThanOneDayException.class
