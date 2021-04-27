@@ -49,11 +49,45 @@ public class DateTime
 	 */
 	public static int subtract(DateTime d1,DateTime d2) throws MoreThanOneDayException
 	{
-		int diff=0;
+		
 		//Todo: add your code here
+		int diff=0;
 
+		//check null case
+		if (d1 == null || d2 == null)
+		{
+			//arbitrary big negative number, not possible otherwise.
+		 return -9999;
+		}
+		//get dates
+		Date date1 = d1.getDate();
+		Date date2 = d2.getDate();
+
+		//get times
+		Time12 time1 = d1.getTime();
+		Time12 time2 = d2.getTime();
+		
+		//convert to 24h time to make it simpler later on.
+		try {
+		   Time24 t1 = time1.toTime24();
+		   Time24 t2 = time2.toTime24();
+	
+			
+		
+		//If they are next date from one another.
+        if ((date1.nextDate() == date2) || date2.nextDate() == date1)
+		{
+			//Subtract hours by minutes and minutes to get the diff and return it.
+			diff = ((t1.getHours() - t2.getHours()) *60) + (t1.getMinutes() - t2.getMinutes()); 
+			return diff;
+		}
+		} catch (InvalidTimeException e) {	
+		}
+
+		//If we reach here that means that the next date diff has not been found and returned.
+		throw new MoreThanOneDayException();
 		//end of your code
-		return diff;
+		
 	}
 	/**
 	 * Convert a DateTime object to string
