@@ -42,15 +42,60 @@ public class Time24
 	 * @return 		An equavalent Time24 object
 	 * 				a null for invalid input parameters
 	 * 				No exception should be thrown
+	 * @throws InvalidTimeException
 	 * @see 	https://www.freecodecamp.org/news/mathematics-converting-am-pm-to-24-hour-clock/
 	 * @note	(12 am and 12 pm are special cases)
 	 */
-	public static Time24 toTime24(int hours, int minutes, AmPm am_pm)
+
+	 //NOTE I had to throw the exception to utilize the constructor to initialize the values for the return (hours,minutes) in the constructor.
+	public static Time24 toTime24(int hours, int minutes, AmPm am_pm) throws InvalidTimeException
 	{
 		Time24 time=null;
 		//Todo : add your code here
+		//Added as part of Step 2 of exam.
+		int resultHours = 0;
+		//
+		//code following constructor logic to ensure no valid 12 hour input.
+		//this ensures that there wont be an exception thrown due to calling constructor with invalid input.
+		if((hours<0||hours>12) || (minutes<0||minutes>=60))
+		{
+			//return time. aka null at this point. following the logic above.
+			return time;
+		};
+	
+        
+		//if the time is PM, need to do some conversions.
+		if (am_pm == AmPm.pm)
+		{
+			//if it is noon, that time is correct in 24hr format
+			if(hours == 12)
+			{
+				resultHours = hours;	
+			}
+			//all other times need 12 added to them, 1pm = 13, 5pm = 17..etc.
+			else
+			{
+				resultHours = hours + 12;
+			}
+			
 
+		}
+		else
+		{
+			//cover case of 12am resulting in a 0 hours time.
+			if(hours == 12)
+			{
+				resultHours = 0;
+			}
+			else
+			{	
+				resultHours = hours;			
+			}
+		
+		}
 
+		//set time to corrected values.
+		time = new Time24(resultHours,minutes);
 		// End of your code
 		return time;
 	}
@@ -74,6 +119,8 @@ public class Time24
 	*/
 	public String toString()
 	{
-		return String.format("%2d:%2d",this.hours,this.minutes);
+		//added 0 padding so one number integers will have correct output.
+		return String.format("%02d:%02d",this.hours,this.minutes);
 	}
 }
+

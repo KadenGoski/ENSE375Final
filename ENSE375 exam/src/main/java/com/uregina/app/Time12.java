@@ -28,7 +28,7 @@ public class Time12
 	/**
 	 * Convert time 12-hour to 24-hour
 	*/
-	public Time24 toTime24() 
+	public Time24 toTime24() throws InvalidTimeException 
 	{
 		return Time24.toTime24(this.hours, this.minutes, this.am_pm);
 	}
