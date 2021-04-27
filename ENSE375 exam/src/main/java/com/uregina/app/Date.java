@@ -123,7 +123,33 @@ public class Date
 	public static boolean lessThan(Date d1,Date d2)
 	{
 		//Todo: Add your code here
-		
+
+		//handle null case.
+		if (d1 == null || d2 == null)
+		{
+			return false;
+		}
+
+		//handle case if year is the same.
+		if (d1.year == d2.year)
+		{
+			if (d1.month <= d2.month)
+			{
+				if(d1.day >= d2.day)
+				{
+					return false;
+				}
+				return true;
+				
+			}
+		}
+		//d1 is less than d2.
+		else if (d1.year < d2.year)
+		{
+			return true;
+		}
+
+		//d1 year is greater, so d1 is not less than d2
 		return false;
 	}
 }

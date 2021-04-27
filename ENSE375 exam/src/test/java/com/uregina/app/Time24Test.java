@@ -79,7 +79,7 @@ public class Time24Test
           catch (InvalidTimeException e){}      
          }
 
-        //Valid time in AM,  noon.
+        //Valid time in AM,  not noon.
         //In this case 6am. should return "06:02".
         //Path 1 -> 2 -> 3 -> 8 -> 9
         @Test
