@@ -1,7 +1,8 @@
 FROM openjdk:8-jdk
 RUN apt-get update
 RUN apt-get install -y maven
-COPY "ense375 Final" /usr/local/service/ense375final
+ARG src="Ense375 Final"
+COPY  ${src} /usr/local/service/ense375final
 WORKDIR /usr/local/service/ense375final
 RUN mvn package
 CMD ["java","-cp","target/app-1.0-SNAPSHOT.jar","com.uregina.app.App"]
