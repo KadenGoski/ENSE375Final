@@ -1,3 +1,7 @@
+//Kaden Goski 200392031
+// ENSE 375 Final 
+//April 27, 2021
+
 package com.uregina.app;
 
 import static org.junit.Assert.assertTrue;
@@ -56,7 +60,7 @@ public class DateTimeTest
       Time12 time2 = new Time12(10,20,am_pm);
       DateTime d2 = new DateTime(date2,time2);
 
-      assertEquals(DateTime.subtract(d1, d2), 1010);
+      assertEquals(DateTime.subtract(d1, d2), 720);
 
   } catch (InvalidDateException | InvalidTimeException | MoreThanOneDayException e) {
   }

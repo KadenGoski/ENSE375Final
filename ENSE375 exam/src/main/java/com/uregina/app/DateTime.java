@@ -71,11 +71,12 @@ public class DateTime
 		try {
 		   Time24 t1 = time1.toTime24();
 		   Time24 t2 = time2.toTime24();
-	
-			
 		
+		Date date3 =  date1.nextDate();
+	    Date date4 = date2.nextDate();
+
 		//If they are next date from one another.
-        if ((date1.nextDate() == date2) || date2.nextDate() == date1)
+        if (((date4.getDay() == date1.getDay()) && ((date4.getMonth() == date1.getMonth())) && (date4.getYear() == date1.getYear())) || ((date3.getDay() == date2.getDay()) && (date3.getMonth() == date2.getMonth()) && (date3.getYear() == date2.getYear())))
 		{
 			//Subtract hours by minutes and minutes to get the diff and return it.
 			diff = ((t1.getHours() - t2.getHours()) *60) + (t1.getMinutes() - t2.getMinutes()); 
